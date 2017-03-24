@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,15 +10,23 @@ namespace WebAPIDemo.Controllers
 {
     public class PCsController : ApiController
     {
+        private NetworkBrowser nwB;
         // GET: api/PCs
         public IEnumerable<string> Get()
         {
-            return new string[] { "Pc1", "Pc2" };
+            nwB = new NetworkBrowser();
+            ArrayList networkComputers = new ArrayList();
+            networkComputers = nwB.getNetworkComputers();
+            string[] s2 = new string[] { "Pc1", "Pc2" };
+            string[] pcStringarray = (string[])networkComputers.ToArray(typeof(string));      
+            return pcStringarray;
         }
 
         // GET: api/PCs/5
         public string Get(int id)
         {
+            
+
             return "Some Pc";
         }
 
