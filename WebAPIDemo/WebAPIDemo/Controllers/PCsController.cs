@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Results;
 
 namespace WebAPIDemo.Controllers
 {
@@ -12,14 +13,14 @@ namespace WebAPIDemo.Controllers
     {
         private NetworkBrowser nwB;
         // GET: api/PCs
-        public IEnumerable<string> Get()
+        public JsonResult<string[]> Get()
         {
             nwB = new NetworkBrowser();
             ArrayList networkComputers = new ArrayList();
             networkComputers = nwB.getNetworkComputers();
             string[] s2 = new string[] { "Pc1", "Pc2" };
             string[] pcStringarray = (string[])networkComputers.ToArray(typeof(string));      
-            return pcStringarray;
+            return Json(pcStringarray);
         }
 
         // GET: api/PCs/5
