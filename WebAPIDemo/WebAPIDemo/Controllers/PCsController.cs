@@ -24,9 +24,7 @@ namespace WebAPIDemo.Controllers
 
         // GET: api/PCs/5
         public string Get(int id)
-        {
-            
-
+        {            
             return "Some Pc";
         }
 
